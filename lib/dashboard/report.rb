@@ -12,7 +12,7 @@ module Dashboard
     attr_accessor :plugin
 
     def name
-      plugin.name
+      @name ||= plugin.full?(:name)
     end
 
     def error(exception)
@@ -30,6 +30,10 @@ module Dashboard
     def self.json_create(data)
       data = data.symbolize_keys_recursive
       obj = new
+      obj.instance_eval do
+        name = data[:name] and @name = name
+        timestamp = data[:timestamp] and @timestamp = timestamp
+      end
       for value in data[:values]
         name, value, options = value.values_at :name, :value, :options
         obj.add name, value, options
@@ -42,7 +46,8 @@ module Dashboard
       result = {
         JSON.create_id => self.class.name,
         :name          => name,
-        :values        => @values
+        :values        => @values,
+        :timestamp     => @timestamp.as_json
       }
       @exception and
         result |= {
