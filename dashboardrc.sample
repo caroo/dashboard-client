@@ -1,0 +1,11 @@
+data_storage_directory '/tmp/dashboard'
+
+plugin LoadAverages
+
+plugin DiskUsage
+
+plugin CodeCoverage do
+  directory '.'
+  rcov_opts %w[-Ilib -x '\btest\/' -x '\bgems\/' ./test/*/*.rb]
+  every 3.hours
+end

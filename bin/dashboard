@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require 'dashboard'
+require 'spruz/go'
+include Spruz::GO
+
+$opt = go 'd'
+
+config_file_name = File.join(ENV['HOME'], '.dashboardrc')
+config = Dashboard::Config.interpret_config_file config_file_name
+client = Dashboard::Client.new(config)
+client.debugging = $opt['d']
+client.run
