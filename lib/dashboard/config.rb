@@ -1,8 +1,11 @@
+require 'fileutils'
+
 module Dashboard
   class Config
     include DSLKit::Interpreter
     extend DSLKit::ConstantMaker
     include Enumerable
+    include FileUtils
 
     def initialize
       @plugins = []
@@ -35,11 +38,8 @@ module Dashboard
     def data_storage_directory(directory = nil)
       return @data_storage_directory if directory.nil?
       directory = directory.to_str
-      if File.directory?(directory) and File.writable?(directory)
-        @data_storage_directory = directory
-      else
-        raise "directory #{directory.inspect} is not a writable directory"
-      end
+      mkdir_p directory
+      @data_storage_directory = directory
     end
 
     def plugin(name, &block)
