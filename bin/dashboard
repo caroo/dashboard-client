@@ -10,4 +10,9 @@ config_file_name = File.join(ENV['HOME'], '.dashboardrc')
 config = Dashboard::Config.interpret_config_file config_file_name
 client = Dashboard::Client.new(config)
 client.debugging = $opt['d']
-client.run
+case cmd = ARGV.shift
+when 'pending'
+  puts client.pending
+when 'measure', nil
+  client.run
+end

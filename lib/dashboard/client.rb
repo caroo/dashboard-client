@@ -6,6 +6,9 @@ module Dashboard
 
     def initialize(config)
       @config = config
+      for plugin in @config
+        plugin.client = self
+      end
     end
 
     attr_reader :config
@@ -22,6 +25,12 @@ module Dashboard
           debugging and warn json
           out.puts json
         end
+      end
+    end
+
+    def pending
+      config.inject([]) do |a, plugin|
+        a.concat Dir[plugin.path('values', '*.json')]
       end
     end
   end

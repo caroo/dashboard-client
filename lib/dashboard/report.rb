@@ -24,7 +24,7 @@ module Dashboard
     end
 
     def filename
-      @plugin.full? { |p| p.path('values', "value-#{@timestamp.strftime('%Y%m%d%H%M%S')}.json") }
+      @plugin.full? { |p| p.path('values', "#{(name || 'value').gsub(/\W+/, '_').downcase}-#{@timestamp.strftime('%Y%m%d%H%M%S')}.json") }
     end
 
     def self.json_create(data)
