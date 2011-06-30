@@ -11,6 +11,8 @@ module Dashboard
 
     attr_accessor :plugin
 
+    attr_reader :timestamp
+
     def name
       @name ||= plugin.full?(:name)
     end
