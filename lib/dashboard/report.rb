@@ -1,7 +1,7 @@
 module Dashboard
   class Report
     def initialize
-      @timestamp = Time.now
+      @timestamp = DateTime.now
       @values = []
     end
 
@@ -23,6 +23,10 @@ module Dashboard
 
     def add(name, value, options = {})
       @values << { :name => name, :value => value, :options => options }
+    end
+
+    def value
+      @values.first
     end
 
     def filename

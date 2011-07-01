@@ -25,6 +25,7 @@ if defined? Gem
     s.add_dependency('dslkit', '~>0.2.6')
     s.add_dependency('json', '~>1.5.3')
     s.add_dependency('sys-cpu', '~>0.6.3')
+    s.add_dependency('yahoo_weatherman', '~>1.1.3')
 
     s.files = PKG_FILES
 
@@ -82,8 +83,13 @@ EOT
   end
 end
 
+desc 'Install the current bundle'
+task :bundle do
+  sh 'bundle'
+end
+
 desc "Default"
-task :default => [ :gemspec, :test ]
+task :default => [ :gemspec, :bundle, :test ]
 
 desc "Prepare a release"
-task :release => [ :clean, :gemspec, :package ]
+task :release => [ :clean, :gemspec, :bundle, :package ]

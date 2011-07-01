@@ -16,6 +16,8 @@ module Dashboard
       self.class.name[/::([^:]+)\Z/, 1]
     end
 
+    option :persistent, true
+
     def initialize(options = {})
       @options = options.symbolize_keys_recursive
       @memory = {}

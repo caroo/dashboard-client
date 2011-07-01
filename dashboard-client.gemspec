@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Pkw.de Development Team"]
-  s.date = %q{2011-06-29}
+  s.date = %q{2011-07-01}
   s.description = %q{This library is used to send monitoring data from the applications to the dashboard service.}
   s.email = %q{dev@pkw.de}
   s.executables = ["dashboard"]
@@ -27,16 +27,19 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<dslkit>, ["~> 0.2.6"])
       s.add_runtime_dependency(%q<json>, ["~> 1.5.3"])
       s.add_runtime_dependency(%q<sys-cpu>, ["~> 0.6.3"])
+      s.add_runtime_dependency(%q<yahoo_weatherman>, ["~> 1.1.3"])
     else
       s.add_dependency(%q<spruz>, ["~> 0.2.8"])
       s.add_dependency(%q<dslkit>, ["~> 0.2.6"])
       s.add_dependency(%q<json>, ["~> 1.5.3"])
       s.add_dependency(%q<sys-cpu>, ["~> 0.6.3"])
+      s.add_dependency(%q<yahoo_weatherman>, ["~> 1.1.3"])
     end
   else
     s.add_dependency(%q<spruz>, ["~> 0.2.8"])
     s.add_dependency(%q<dslkit>, ["~> 0.2.6"])
     s.add_dependency(%q<json>, ["~> 1.5.3"])
     s.add_dependency(%q<sys-cpu>, ["~> 0.6.3"])
+    s.add_dependency(%q<yahoo_weatherman>, ["~> 1.1.3"])
   end
 end

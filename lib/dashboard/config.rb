@@ -25,6 +25,7 @@ module Dashboard
     end
 
     def interpret_config_file(filename)
+      filename = File.expand_path filename
       File.open(filename) do |config|
         interpret config.read
       end
