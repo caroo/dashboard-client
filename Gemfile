@@ -9,4 +9,5 @@ group :development do
   gem 'sdoc'
   gem 'rcov'
   gem 'test-unit', '2.3.0'
+  gem 'mocha', '0.9.12', :require  => false
 end
