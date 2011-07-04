@@ -24,7 +24,7 @@ if defined? Gem
     s.add_dependency('spruz', '~>0.2.8')
     s.add_dependency('dslkit', '~>0.2.6')
     s.add_dependency('json', '~>1.5.3')
-    s.add_dependency('sys-cpu', '~>0.6.3')
+    s.add_dependency('cpu', '~>0.0.1')
     s.add_dependency('yahoo_weatherman', '~>1.1.3')
 
     s.files = PKG_FILES

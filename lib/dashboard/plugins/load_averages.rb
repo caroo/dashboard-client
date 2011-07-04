@@ -1,14 +1,14 @@
-require 'sys/cpu'
+require 'cpu'
 
 module Dashboard
   module Plugins
     class LoadAverages < Dashboard::Plugin
 
       def build_report
-        avg = Sys::CPU.load_avg
-        report :last_minute, avg[0]
-        report :last_five_minutes, avg[1]
-        report :last_fifteen_minutes, avg[2]
+        load = CPU.load
+        report :last_minute, load.last_minute, :num_processors => load.num_processors
+        report :last_5_minutes, load.last_5_minutes, :num_processors => load.num_processors
+        report :last_15_minutes, load.last_15_minutes, :num_processors => load.num_processors
       end
     end
   end
