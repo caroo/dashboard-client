@@ -28,12 +28,14 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<json>, ["~> 1.5.3"])
       s.add_runtime_dependency(%q<cpu>, ["~> 0.0.1"])
       s.add_runtime_dependency(%q<yahoo_weatherman>, ["~> 1.1.3"])
+      s.add_runtime_dependency(%q<activerecord>, ["~> 3.0.9"])
     else
       s.add_dependency(%q<spruz>, ["~> 0.2.8"])
       s.add_dependency(%q<dslkit>, ["~> 0.2.6"])
       s.add_dependency(%q<json>, ["~> 1.5.3"])
       s.add_dependency(%q<cpu>, ["~> 0.0.1"])
       s.add_dependency(%q<yahoo_weatherman>, ["~> 1.1.3"])
+      s.add_dependency(%q<activerecord>, ["~> 3.0.9"])
     end
   else
     s.add_dependency(%q<spruz>, ["~> 0.2.8"])
@@ -41,5 +43,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<json>, ["~> 1.5.3"])
     s.add_dependency(%q<cpu>, ["~> 0.0.1"])
     s.add_dependency(%q<yahoo_weatherman>, ["~> 1.1.3"])
+    s.add_dependency(%q<activerecord>, ["~> 3.0.9"])
   end
 end

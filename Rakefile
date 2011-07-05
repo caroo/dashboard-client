@@ -26,6 +26,7 @@ if defined? Gem
     s.add_dependency('json', '~>1.5.3')
     s.add_dependency('cpu', '~>0.0.1')
     s.add_dependency('yahoo_weatherman', '~>1.1.3')
+    s.add_dependency('activerecord', '~>3.0.9')
 
     s.files = PKG_FILES
 
