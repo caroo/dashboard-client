@@ -1,3 +1,5 @@
+# vim: set ft=ruby:
+
 data_storage_directory '/tmp/dashboard'
 
 plugin LoadAverages
@@ -15,4 +17,8 @@ plugin YahooWeather do
   persistent false
   woeid 667931
   unit  'c'
+end
+
+plugin PkwdeLiveData do
+  database_config '/data/web/pkwde/current/services/search_service/config/database.yml'
 end

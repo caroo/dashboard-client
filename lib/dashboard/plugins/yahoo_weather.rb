@@ -11,7 +11,7 @@ module Dashboard
         if condition = Weatherman::Client.new(:unit => unit).lookup_by_woeid(woeid).full?(:condition)
           report :temp, condition['temp'], condition.subhash('text', 'code')
         else
-          raise "couldn't fetch weather data for #{woeid.inspect}"
+          raise DataFeedUnavailable, "couldn't fetch weather data for #{woeid.inspect}"
         end
       end
     end

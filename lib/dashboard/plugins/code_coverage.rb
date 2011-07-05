@@ -6,7 +6,7 @@ module Dashboard
 
       def build_report
         directory and File.directory?(directory) or
-          raise "#{directory.inspect} isn't a directory" # TODO define an exception hierarchy
+          raise MissingPluginOption, "#{directory.inspect} isn't a directory"
         cmd = "rcov --text-summary #{rcov_opts * ' '}"
         debugging and warn "Executing #{cmd.inspect}"
         cd directory do

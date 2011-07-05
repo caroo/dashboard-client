@@ -14,7 +14,7 @@ module Dashboard
       ]
 
       def build_report
-        uri or raise "require uri option in order to function"
+        uri or raise MissingPluginOption, "require uri option in order to function"
         doc = open("#{uri}/rssLatest") { |data| Nokogiri::XML(data) }
         doc.remove_namespaces!
         titles = (doc / '//feed/entry/title').map(&:text)
