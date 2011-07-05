@@ -21,4 +21,5 @@ end
 
 plugin PkwdeLiveData do
   database_config '/data/web/pkwde/current/services/search_service/config/database.yml'
+  environment     'production'
 end

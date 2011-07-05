@@ -25,12 +25,24 @@ module Dashboard
       @values << { :name => name, :value => value, :options => options }
     end
 
-    def value
-      @values.first
+    def value_hash(name)
+      @values.find { |v| v[:name] == name }
+    end
+
+    def value(name)
+      value_hash(name).full?(:[], :value)
     end
 
     def filename
       @plugin.full? { |p| p.path('values', "#{(name || 'value').gsub(/\W+/, '_').downcase}-#{@timestamp.strftime('%Y%m%d%H%M%S')}.json") }
+    end
+
+    def success?
+      exception.nil?
+    end
+
+    def failure?
+      not success?
     end
 
     def self.json_create(data)

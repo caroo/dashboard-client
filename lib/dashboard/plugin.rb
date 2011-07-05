@@ -49,9 +49,13 @@ module Dashboard
     def remember(*rest)
     end
 
-    def report(name, value, options = {})
-      @report.add(name, value, options)
-      self
+    def report(name = nil, value = nil, options = {})
+      if name.nil?
+        @report
+      else
+        @report.add(name, value, options)
+        self
+      end
     end
 
     def error(exception)

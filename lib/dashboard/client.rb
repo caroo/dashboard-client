@@ -20,6 +20,8 @@ module Dashboard
 
     attr_accessor :debugging
 
+    attr_accessor :dry_run
+
     def run
       reports = []
       for plugin in @config
@@ -27,6 +29,7 @@ module Dashboard
         report = plugin.run
         reports << report
         plugin.persistent or next
+        dry_run and next
         mkdir_p plugin.path('values')
         File.open(report.filename, 'w') do |out|
           json = JSON(report)

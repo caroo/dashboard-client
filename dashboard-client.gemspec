@@ -6,12 +6,12 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Pkw.de Development Team"]
-  s.date = %q{2011-07-04}
+  s.date = %q{2011-07-05}
   s.description = %q{This library is used to send monitoring data from the applications to the dashboard service.}
   s.email = %q{dev@pkw.de}
   s.executables = ["dashboard"]
   s.extra_rdoc_files = ["README.markdown"]
-  s.files = ["Gemfile", "README.markdown", "Rakefile", "VERSION", "bin/dashboard", "dashboard-client.gemspec", "dashboardrc.sample", "lib/dashboard-client.rb", "lib/dashboard.rb", "lib/dashboard/client.rb", "lib/dashboard/config.rb", "lib/dashboard/plugin.rb", "lib/dashboard/plugins.rb", "lib/dashboard/plugins/code_coverage.rb", "lib/dashboard/plugins/cpu_usage.rb", "lib/dashboard/plugins/disk_usage.rb", "lib/dashboard/plugins/hudson.rb", "lib/dashboard/plugins/load_averages.rb", "lib/dashboard/plugins/yahoo_weather.rb", "lib/dashboard/report.rb", "lib/dashboard/version.rb", "lib/dashboard/xt/numeric.rb", "test/dashboard/config_test.rb", "test/dashboard/plugins/disk_usage_test.rb", "test/dashboard/plugins/hudson_test.rb", "test/dashboard/plugins/load_averages_test.rb"]
+  s.files = ["Gemfile", "README.markdown", "Rakefile", "VERSION", "bin/dashboard", "dashboard-client.gemspec", "dashboardrc.sample", "lib/dashboard-client.rb", "lib/dashboard.rb", "lib/dashboard/client.rb", "lib/dashboard/config.rb", "lib/dashboard/plugin.rb", "lib/dashboard/plugins.rb", "lib/dashboard/plugins/code_coverage.rb", "lib/dashboard/plugins/cpu_usage.rb", "lib/dashboard/plugins/disk_usage.rb", "lib/dashboard/plugins/hudson.rb", "lib/dashboard/plugins/load_averages.rb", "lib/dashboard/plugins/pkwde_live_data.rb", "lib/dashboard/plugins/yahoo_weather.rb", "lib/dashboard/report.rb", "lib/dashboard/version.rb", "lib/dashboard/xt/numeric.rb", "test/dashboard/config_test.rb", "test/dashboard/plugins/disk_usage_test.rb", "test/dashboard/plugins/hudson_test.rb", "test/dashboard/plugins/load_averages_test.rb"]
   s.homepage = %q{http://pkw.de}
   s.rdoc_options = ["--main", "README.markdown"]
   s.require_paths = ["lib"]

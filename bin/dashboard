@@ -13,6 +13,11 @@ client.debugging = $opt['d']
 case cmd = ARGV.shift
 when 'pending'
   puts client.pending
+when 'dry_run'
+  client.dry_run = true
+  reports = client.run
+  jj reports
 when 'measure', nil
-  client.run
+  reports = client.run
 end
+exit reports && reports.any?(&:failure?) ? 1 : 0
