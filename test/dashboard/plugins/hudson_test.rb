@@ -67,10 +67,10 @@ EOT
         report, = plugin.run
         assert_nil report.exception
         assert_equal [
-          { :options=>{}, :value=>:broken, :name=>"billing_service" },
-          { :options=>{}, :value=>:stable, :name=>"mos_eisley" },
-          { :options=>{}, :value=>:aborted, :name=>"pkwde" },
-          { :options=>{}, :value=>:building, :name=>"pkwde-rcov" }
+          {:options=>{:build_state=>:broken}, :value=>88, :name=>"billing_service"},
+          {:options=>{:build_state=>:stable}, :value=>49, :name=>"mos_eisley"},
+          {:options=>{:build_state=>:aborted}, :value=>586, :name=>"pkwde"},
+          {:options=>{:build_state=>:building}, :value=>229, :name=>"pkwde-rcov"}
         ], report.values
       end
     end

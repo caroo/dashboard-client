@@ -1,8 +1,10 @@
 require 'fileutils'
+require 'spruz/write'
 
 module Dashboard
   class Client
     include FileUtils
+    include Spruz::Write
 
     def initialize(config)
       @config = config
@@ -22,16 +24,19 @@ module Dashboard
 
     attr_accessor :dry_run
 
-    def run
+    def run(plugin_names = nil)
       reports = []
       for plugin in @config
+        if plugin_names.full?
+          plugin_names.include?(plugin.name) or next
+        end
         plugin.client = self
         report = plugin.run
         reports << report
         plugin.persistent or next
         dry_run and next
         mkdir_p plugin.path('values')
-        File.open(report.filename, 'w') do |out|
+        write(report.filename) do |out|
           json = JSON(report)
           debugging and warn json
           out.puts json

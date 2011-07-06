@@ -15,7 +15,7 @@ when 'pending'
   puts client.pending
 when 'dry_run'
   client.dry_run = true
-  reports = client.run
+  reports = client.run ARGV
   jj reports
 when 'measure', nil
   reports = client.run

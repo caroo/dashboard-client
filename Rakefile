@@ -21,12 +21,18 @@ if defined? Gem
     s.summary = 'Client library for the dashboard service'
     s.description = 'This library is used to send monitoring data from the applications to the dashboard service.'
 
-    s.add_dependency('spruz', '~>0.2.8')
-    s.add_dependency('dslkit', '~>0.2.6')
-    s.add_dependency('json', '~>1.5.3')
-    s.add_dependency('cpu', '~>0.0.1')
-    s.add_dependency('yahoo_weatherman', '~>1.1.3')
-    s.add_dependency('activerecord', '~>3.0.9')
+    s.add_dependency 'spruz', '~>0.2.8'
+    s.add_dependency 'dslkit', '~>0.2.6'
+    s.add_dependency 'json', '~>1.5.3'
+    s.add_dependency 'cpu', '~>0.0.1'
+    s.add_dependency 'yahoo_weatherman', '~>1.1.3'
+    s.add_dependency 'activerecord', '~>3.0.9'
+    s.add_dependency 'resque', '1.17.1'
+    s.add_development_dependency 'rake', '0.9.2'
+    s.add_development_dependency 'sdoc'
+    s.add_development_dependency 'rcov'
+    s.add_development_dependency 'test-unit', '2.3.0'
+    s.add_development_dependency 'mocha', '0.9.12'
 
     s.files = PKG_FILES
 

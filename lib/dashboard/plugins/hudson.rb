@@ -6,7 +6,7 @@ module Dashboard
     class Hudson < Plugin
       option :uri
 
-      MAP = [
+      BUILD_STATES = [
         /\A\?\Z/,           :building,
         /broken/,           :broken,
         /(stable|normal)/,  :stable,
@@ -19,9 +19,10 @@ module Dashboard
         doc.remove_namespaces!
         titles = (doc / '//feed/entry/title').map(&:text)
         for title in titles
-          if title =~ /\A(.*)?\s+#\d+\s+\((.*?)\)/
-            name, value = $1, $2
-            report name, MAP.each_cons(2).find { |regexp, v| regexp =~ value and break v } || :unknown
+          if title =~ /\A(.*)?\s+#(\d+)\s+\((.*?)\)/
+            name, value, state = $1, $2.to_i, $3
+            report name, value,
+              :build_state => BUILD_STATES.each_cons(2).find { |regexp, s| regexp =~ state and break s } || :unknown
           end
         end
       end

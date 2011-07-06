@@ -19,7 +19,20 @@ plugin YahooWeather do
   unit  'c'
 end
 
+plugin Hudson do
+  uri 'http://uranus.mediaventures.intern:3000'
+end
+
+plugin Clock do
+  alarm_time_period '09:30'..'09:45' 
+end
+
 plugin PkwdeLiveData do
   database_config '/data/web/pkwde/current/services/search_service/config/database.yml'
   environment     'production'
+end
+
+plugin ResqueStats do
+  #redis_url 'redis://10.23.3.64:6379/15'
+  redis_url  'redis://127.0.0.1:6379/15'
 end
