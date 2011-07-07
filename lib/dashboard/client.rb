@@ -51,8 +51,11 @@ module Dashboard
       end
     end
 
-    def pending
+    def pending(plugin_names = nil)
       config.inject([]) do |a, plugin|
+        if plugin_names.full?
+          plugin_names.include?(plugin.name) or next a
+        end
         a.concat Dir[plugin.path('values', '*.json')]
       end
     end

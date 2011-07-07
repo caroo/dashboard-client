@@ -12,12 +12,14 @@ client = Dashboard::Client.new(config)
 client.debugging = $opt['d']
 case cmd = ARGV.shift
 when 'pending'
-  puts client.pending
+  puts client.pending ARGV
 when 'dry_run'
   client.dry_run = true
   reports = client.run ARGV
   jj reports
 when 'measure', nil
   reports = client.run
+else
+  fail "unknown command #{cmd.inspect}"
 end
 exit reports && reports.any?(&:failure?) ? 1 : 0
