@@ -1,15 +1,10 @@
-require 'yaml'
-require 'active_record'
+require 'dashboard/plugins/database_plugin'
 
 module Dashboard
   module Plugins
-    class PkwdeLiveData < Dashboard::Plugin
-      option :database_config
-
-      option :environment, 'production'
-
+    class PkwdeLiveData < DatabasePlugin
       def build_report
-        configure_db
+        super
         report :count_dealer_cars, how_many?(%{
           SELECT COUNT(*) FROM cars, car_statuses
           WHERE cars.car_status_id  = car_statuses.id
@@ -51,20 +46,6 @@ module Dashboard
             AND (last_execution IS NULL
               OR DATE_ADD(last_execution, INTERVAL 1 DAY) < NOW())
         })
-      end
-
-      private
-
-      def configure_db
-        database_config and File.readable?(database_config) or
-          raise MissingPluginOption, "option database_config required for plugin"
-        config = YAML.load_file(database_config)
-        ActiveRecord::Base.establish_connection(config[environment])
-        @db = ActiveRecord::Base.connection
-      end
-
-      def how_many?(sql)
-        @db.select_rows(sql).full? { |count| count.first.first.to_i }
       end
     end
   end

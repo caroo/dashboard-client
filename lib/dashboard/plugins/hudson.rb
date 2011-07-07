@@ -13,9 +13,13 @@ module Dashboard
         /aborted/,          :aborted,
       ]
 
+      def fetch_document(uri)
+        open(uri) { |data| Nokogiri::XML(data) }
+      end
+
       def build_report
         uri or raise MissingPluginOption, "require uri option in order to function"
-        doc = open("#{uri}/rssLatest") { |data| Nokogiri::XML(data) }
+        doc = fetch_document("#{uri}/rssLatest")
         doc.remove_namespaces!
         titles = (doc / '//feed/entry/title').map(&:text)
         for title in titles

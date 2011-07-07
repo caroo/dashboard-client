@@ -49,7 +49,7 @@ module Dashboard
       block and plugin.configure(&block)
       @plugins << plugin
     rescue NameError => e
-      raise "plugin #{name} is unknown/invalid: #{e}"
+      warn "plugin #{name} is unknown/invalid: #{e}"
     end
   end
 end

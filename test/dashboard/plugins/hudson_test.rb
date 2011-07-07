@@ -63,7 +63,7 @@ EOT
       def test_hudson_plugin
         plugin = Hudson.new
         plugin.uri 'something'
-        plugin.expects(:open).returns(Nokogiri::XML(RESPONSE_XML))
+        plugin.expects(:fetch_document).with('something/rssLatest').returns(Nokogiri::XML(RESPONSE_XML))
         report, = plugin.run
         assert_nil report.exception
         assert_equal [
